@@ -80,6 +80,7 @@ export class Classes extends Race{
                     if(this.vie < 4000){
                         this.vie = 4000;
                     }
+                    this.maxVie = this.vie
                     a = 0
                 }
                 else if(this.role == "heal" || this.role == "dpsdistance"){
@@ -92,6 +93,7 @@ export class Classes extends Race{
                     if(this.vie < 1400){
                         this.vie = 1400;
                     }
+                    this.maxVie = this.vie
                     a = 0
                 }
                 else{
@@ -104,6 +106,7 @@ export class Classes extends Race{
                     if(this.vie < 1600){
                         this.vie = 1600;
                     }
+                    this.maxVie = this.vie
                     a = 0
                 }
             }
