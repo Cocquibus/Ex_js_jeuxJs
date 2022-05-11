@@ -1,0 +1,8 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image: url(./bg.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}

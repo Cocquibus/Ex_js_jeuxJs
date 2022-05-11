@@ -1,5 +1,7 @@
 import { Boss,Classes} from "./class.js"
 
+export let vexiona = new Boss("vexiona",10000);
+
 export let mt1 = new Classes("mt1", "humain", "guerrier", "protection", "mt");
 export let mt2 = new Classes("mt2", "pandaren", "moine", "maitre-brasseur", "mt");
 
