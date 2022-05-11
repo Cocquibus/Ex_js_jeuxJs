@@ -1,6 +1,6 @@
-import { Boss,Classes} from "./class.js"
+import {Boss,Classes} from "./class.js"
 
-export let vexiona = new Boss("vexiona",10000);
+export let vexiona = new Boss("vexiona",60000);
 
 export let mt1 = new Classes("Grochat", "humain", "guerrier", "protection", "mt");
 export let mt2 = new Classes("Yûee", "pandaren", "moine", "maitre-brasseur", "mt");
@@ -48,4 +48,11 @@ export let tableauTeam =
     dpsdist5,
     dpsdist6,
     dpsdist7
+]
+export let tableauTeamHeal =
+[
+    heal1,
+    heal2,
+    heal3,
+    heal4
 ]
