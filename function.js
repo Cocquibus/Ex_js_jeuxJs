@@ -75,20 +75,36 @@ export function healMax(x) {
             switch (y) {
                 case "1":
                     i = 0;
-                    for (i; i < tableauTeam.length; i++) {
-                        tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.1)
-                        x.mana -= 2
+                    if (x.mana > 20) {
+                        for (i; i < tableauTeam.length; i++) {
+                            tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.1)
+                            if (tableauTeam[i].vie > tableauTeam[i].maxVie) {
+                                tableauTeam[i].vie = tableauTeam[i].maxVie
+                            }
+                            x.mana -= 2
+                        }
+                    }
+                    else {
+                        console.log("vous ne pouvez pas soigné avec si peu de mana")
                     }
                     console.table(tableauTeam)
                     break;
                 case "2":
                     i = 0;
-                    for (i; i < tableauTeam.length; i++) {
-                        tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.4)
-                        x.mana -= 10
+                    if (x.mana > 50) {
+                        for (i; i < tableauTeam.length; i++) {
+                            tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.4)
+                            if (tableauTeam[i].vie > tableauTeam[i].maxVie) {
+                                tableauTeam[i].vie = tableauTeam[i].maxVie
+                            }
+                            x.mana -= 10
+                        }
+                    }
+                    else {
+                        console.log("vous ne pouvez pas soigné avec si peu de mana")
                     }
                     console.table(tableauTeam)
-                    x.mana += 40
+                    x.mana += 7
                     break;
                 default:
                     break;
@@ -101,20 +117,39 @@ export function healMax(x) {
             switch (y) {
                 case "1":
                     i = 0;
-                    for (i; i < tableauTeam.length; i++) {
-                        if(tableauTeam[i].role == "mt"){
-                            tableauTeam[i].vie += (tableauTeam[i].maxVie *0.5)
+                    if(x.mana > 20){
+                        for (i; i < tableauTeam.length; i++) {
+                            if (tableauTeam[i].role == "mt") {
+                                tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.5)
+                                if (tableauTeam[i].vie > tableauTeam[i].maxVie) {
+                                    tableauTeam[i].vie = tableauTeam[i].maxVie
+                                }
+                                x.mana -= 20
+                            }
                         }
+    
                     }
+                    else {
+                        console.log("vous ne pouvez pas soigné avec si peu de mana")
+                    }                    
                     console.table(tableauTeam)
                     break;
                 case "2":
                     i = 0;
-                    for (i; i < tableauTeam.length; i++) {
-                        if(tableauTeam[i].role == "mt"){
-                            tableauTeam[i].vie += (tableauTeam[i].maxVie *0.5)
-                        }
+                    if(x.mana > 20){
+                        for (i; i < tableauTeam.length; i++) {
+                            if (tableauTeam[i].role == "mt") {
+                                tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.7)
+                                if (tableauTeam[i].vie > tableauTeam[i].maxVie) {
+                                    tableauTeam[i].vie = tableauTeam[i].maxVie
+                                }
+                                x.mana -= 40
+                            }
+                        }    
                     }
+                    else {
+                        console.log("vous ne pouvez pas soigné avec si peu de mana")
+                    }                    
                     console.table(tableauTeam)
                     break;
                 default:
@@ -122,7 +157,46 @@ export function healMax(x) {
             }
             break;
         case "tisse-brume":
-
+            alert("quel technique voulez vous utiliser:")
+            y = prompt("1: soin de groupe faible, 2: soin de groupe puissant")
+            i = 0;
+            switch (y) {
+                case "1":
+                    i = 0;
+                    if(x.mana > 20){
+                        for (i; i < tableauTeam.length; i++) {
+                            tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.2)
+                            if (tableauTeam[i].vie > tableauTeam[i].maxVie) {
+                                tableauTeam[i].vie = tableauTeam[i].maxVie
+                            }
+                            x.mana -= 4
+                        }    
+                    }
+                    else{
+                        console.log("vous ne pouvez pas soigné avec si peu de mana")  
+                    }
+                    console.table(tableauTeam)
+                    break;
+                case "2":
+                    i = 0;
+                    if(x.mana > 20){
+                        for (i; i < tableauTeam.length; i++) {
+                            tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.5)
+                            if (tableauTeam[i].vie > tableauTeam[i].maxVie) {
+                                tableauTeam[i].vie = tableauTeam[i].maxVie
+                            }
+                            x.mana -= 12
+                        }    
+                    }
+                    else{
+                        console.log("vous ne pouvez pas soigné avec si peu de mana")  
+                    }
+                    console.table(tableauTeam)
+                    x.mana += 40
+                    break;
+                default:
+                    break;
+            }
             break;
         default:
             break;

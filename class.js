@@ -10,7 +10,9 @@ export class Boss{
     }
     //technique anti tank
     techniqueSouffle(x){
-        x.vie -= ((200 * x.reduction) / 100)
+        let vexionadmg = Math.round((((5000 * (100 - x.reduction)/100))))
+        console.log("dommage infligé !!! ? "+vexionadmg + " a " + x.name );
+        x.vie -= vexionadmg
         if(x == mt1){
             x.vie -= 150 * dotmt1
             dotmt1 += 1
