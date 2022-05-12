@@ -1,4 +1,6 @@
-import { mt1, mt2, heal1, heal2, heal3, heal4, dpscac1, dpscac2, dpscac3, dpscac4, dpscac5, dpscac6, dpscac7, dpsdist1, dpsdist2, dpsdist3, dpsdist4, dpsdist5, dpsdist6, dpsdist7,vexiona,tableauTeam, tableauTeamHeal} from "./equipe.js";
+import { mt1, mt2, heal1, heal2, heal3, heal4, dpscac1, dpscac2, dpscac3, dpscac4, dpscac5, dpscac6, dpscac7, dpsdist1, dpsdist2, dpsdist3, dpsdist4, dpsdist5, dpsdist6, dpsdist7, vexiona, tableauTeam, tableauTeamHeal } from "./equipe.js";
+import { compteur } from "./main.js";
+import { Classes } from "./class.js"
 export function preparation() {
     mt1.equilibrageStat()
     mt2.equilibrageStat()
@@ -39,25 +41,90 @@ export function degats(x) {
     let totalDmg = 0;
     let i = 0;
     for (i; i < x.length; i++) {
-        let crit = Math.random() *4
-        if(crit >= 3){
+        let crit = Math.random() * 4
+        if (crit >= 3) {
             totalDmg += Math.round(x[i].stat * (Math.random() * (2 - 1.25) + 1.25))
             console.log(x[i].name + " à reussi un coup critique et inflige: " + Math.round(x[i].stat * (Math.random() * (2 - 1.25) + 1.25)) + " ce tour ci !");
 
         }
-        else{
+        else {
             totalDmg += x[i].stat
         }
     }
     console.log("total des dommage avec " + x.length + "/20 joueurs: " + totalDmg);
     vexiona.vie -= totalDmg
 }
-export function checkHealSoin(x){
+export function checkHealSoin(x) {
     let i = 0;
-    for(i;i<tableauTeamHeal.length;i++){
-        if(x[i].vie <= 0){
-            x.splice(i,1)
+    for (i; i < tableauTeamHeal.length; i++) {
+        if (x[i].vie <= 0) {
+            x.splice(i, 1)
         }
     }
     console.table(x)
+}
+export function healMax(x) {
+    let y = 0;
+    let i = 0;
+    console.log("vous avez choisi " + x.name + " et soignera votre groupe. Quel technique voulez vous utiliser ?")
+    switch (x.specialisation) {
+        case "restauration":
+            alert("quel technique voulez vous utiliser:")
+            y = prompt("1: soin de groupe faible, 2: soin de groupe puissant")
+            i = 0;
+            switch (y) {
+                case "1":
+                    i = 0;
+                    for (i; i < tableauTeam.length; i++) {
+                        tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.1)
+                        x.mana -= 2
+                    }
+                    console.table(tableauTeam)
+                    break;
+                case "2":
+                    i = 0;
+                    for (i; i < tableauTeam.length; i++) {
+                        tableauTeam[i].vie += (tableauTeam[i].maxVie * 0.4)
+                        x.mana -= 10
+                    }
+                    console.table(tableauTeam)
+                    x.mana += 40
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case "sacre":
+            alert("quel technique voulez vous utiliser:")
+            y = prompt("1: soin faible sur les tanks, 2: soin puissant sur les tanks")
+            i = 0;
+            switch (y) {
+                case "1":
+                    i = 0;
+                    for (i; i < tableauTeam.length; i++) {
+                        if(tableauTeam[i].role == "mt"){
+                            tableauTeam[i].vie += (tableauTeam[i].maxVie *0.5)
+                        }
+                    }
+                    console.table(tableauTeam)
+                    break;
+                case "2":
+                    i = 0;
+                    for (i; i < tableauTeam.length; i++) {
+                        if(tableauTeam[i].role == "mt"){
+                            tableauTeam[i].vie += (tableauTeam[i].maxVie *0.5)
+                        }
+                    }
+                    console.table(tableauTeam)
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case "tisse-brume":
+
+            break;
+        default:
+            break;
+    }
 }
