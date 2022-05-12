@@ -7,86 +7,94 @@ preparation()
 donnees()
 alert("bonne chance !")
 while (vexiona.vie > 0 && tableauTeam.length > 0) {
-    let choixTanking = prompt("quel tank encaissera Vexiona pour ce tour ? mt1/mt2/h")
-    if (choixTanking == "mt1" && mt1.vie > 0 && tableauTeam.length > 0) {
-        console.log("Vexiona utilise ca technique sur votre tank !")
-        vexiona.techniqueSouffle(mt1)
-        console.log("Vexiona utilise ca technique sur votre groupe !")
-        vexiona.techniqueRaid()
-        degats(tableauTeam)
-        donnees()
-        let z = 1;
-        while (z == 1) {
-            let demandeSoin = prompt("soigner ce tour ci ? oui/non")
-            if (demandeSoin.toLowerCase() == "oui" && tableauTeam.length > 0) {
-                checkHealSoin(tableauTeamHeal)
-                let choixHeal = prompt("quel soigneur voulez vous choisir")
-                for (compteur; compteur < tableauTeamHeal.length; compteur++) {
-                    if (tableauTeamHeal[compteur].name == choixHeal) {
-                        healMax(tableauTeamHeal[compteur])
+    if (vexiona.vie > 20000) {
+        let choixTanking = prompt("quel tank encaissera Vexiona pour ce tour ? mt1/mt2/h")
+        if (choixTanking == "mt1" && mt1.vie > 0 && tableauTeam.length > 0) {
+            console.log("Vexiona utilise ca technique sur votre tank !")
+            vexiona.techniqueSouffle(mt1)
+            console.log("Vexiona utilise ca technique sur votre groupe !")
+            vexiona.techniqueRaid()
+            degats(tableauTeam)
+            donnees()
+            let z = 1;
+            while (z == 1) {
+                let demandeSoin = prompt("soigner ce tour ci ? oui/non")
+                if (demandeSoin.toLowerCase() == "oui" && tableauTeam.length > 0) {
+                    checkHealSoin(tableauTeamHeal)
+                    let choixHeal = prompt("quel soigneur voulez vous choisir")
+                    for (compteur; compteur < tableauTeamHeal.length; compteur++) {
+                        if (tableauTeamHeal[compteur].name == choixHeal) {
+                            healMax(tableauTeamHeal[compteur])
+                        }
                     }
+                    compteur = 0
                 }
-                compteur = 0
+                else {
+                    z = 0
+                }
             }
-            else {
-                z = 0
+        }
+        else if (choixTanking == "mt2" && mt2.vie > 0) {
+            console.log("Vexiona utilise ca technique sur votre tank !")
+            vexiona.techniqueSouffle(mt2)
+            console.log("Vexiona utilise ca technique sur votre groupe !")
+            vexiona.techniqueRaid()
+            degats(tableauTeam)
+            donnees()
+            let z = 1;
+            while (z == 1) {
+                let demandeSoin = prompt("soigner ce tour ci ? oui/non")
+                if (demandeSoin.toLowerCase() == "oui" && tableauTeam.length > 0) {
+                    checkHealSoin(tableauTeamHeal)
+                    let choixHeal = prompt("quel soigneur voulez vous choisir")
+                    for (compteur; compteur < tableauTeamHeal.length; compteur++) {
+                        if (tableauTeamHeal[compteur].name == choixHeal) {
+                            healMax(tableauTeamHeal[compteur])
+                        }
+                    }
+                    compteur = 0
+                }
+                else {
+                    z = 0
+                }
+            }
+        }
+        else if (choixTanking == "h") {
+            let x = Math.floor(Math.random() * tableauTeam.length)
+            vexiona.techniqueSouffle(tableauTeam[x])
+            console.log("Vexiona utilise ca technique sur votre groupe !")
+            vexiona.techniqueRaid()
+            degats(tableauTeam)
+            donnees()
+            let z = 1;
+            while (z == 1) {
+                let demandeSoin = prompt("soigner ce tour ci ? oui/non")
+                if (demandeSoin.toLowerCase() == "oui" && tableauTeam.length > 0) {
+                    checkHealSoin(tableauTeamHeal)
+                    let choixHeal = prompt("quel soigneur voulez vous choisir")
+                    for (compteur; compteur < tableauTeamHeal.length; compteur++) {
+                        if (tableauTeamHeal[compteur].name == choixHeal) {
+                            healMax(tableauTeamHeal[compteur])
+                        }
+                    }
+                    compteur = 0
+                }
+                else {
+                    z = 0
+                }
             }
         }
     }
-    else if (choixTanking == "mt2" && mt2.vie > 0) {
-        console.log("Vexiona utilise ca technique sur votre tank !")
-        vexiona.techniqueSouffle(mt2)
-        console.log("Vexiona utilise ca technique sur votre groupe !")
+    else{
+        console.log("Vexiona enrage")
         vexiona.techniqueRaid()
-        degats(tableauTeam)
-        donnees()
-        let z = 1;
-        while (z == 1) {
-            let demandeSoin = prompt("soigner ce tour ci ? oui/non")
-            if (demandeSoin.toLowerCase() == "oui" && tableauTeam.length > 0) {
-                checkHealSoin(tableauTeamHeal)
-                let choixHeal = prompt("quel soigneur voulez vous choisir")
-                for (compteur; compteur < tableauTeamHeal.length; compteur++) {
-                    if (tableauTeamHeal[compteur].name == choixHeal) {
-                        healMax(tableauTeamHeal[compteur])
-                    }
-                }
-                compteur = 0
-            }
-            else {
-                z = 0
-            }
-        }
-    }
-    else if (choixTanking == "h") {
-        let x = Math.floor(Math.random() * tableauTeam.length)
-        vexiona.techniqueSouffle(tableauTeam[x])
-        console.log("Vexiona utilise ca technique sur votre groupe !")
         vexiona.techniqueRaid()
-        degats(tableauTeam)
-        donnees()
-        let z = 1;
-        while (z == 1) {
-            let demandeSoin = prompt("soigner ce tour ci ? oui/non")
-            if (demandeSoin.toLowerCase() == "oui" && tableauTeam.length > 0) {
-                checkHealSoin(tableauTeamHeal)
-                let choixHeal = prompt("quel soigneur voulez vous choisir")
-                for (compteur; compteur < tableauTeamHeal.length; compteur++) {
-                    if (tableauTeamHeal[compteur].name == choixHeal) {
-                        healMax(tableauTeamHeal[compteur])
-                    }
-                }
-                compteur = 0
-            }
-            else {
-                z = 0
-            }
-        }
+        vexiona.techniqueRaid()
     }
 }
-if(tableauTeam.length <= 0) {
+if (tableauTeam.length <= 0) {
     alert("tout les joueurs de votre groupe sont mort !")
 }
-else{
+else {
     alert("Félicitations, vous avez reussi à battre Vexiona, rendez-vous au prochain boss !")
 }
