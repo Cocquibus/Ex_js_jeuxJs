@@ -86,10 +86,8 @@ while (vexiona.vie > 0 && tableauTeam.length > 0) {
         }
     }
     else{
-        console.log("Vexiona enrage")
-        vexiona.techniqueRaid()
-        vexiona.techniqueRaid()
-        vexiona.techniqueRaid()
+        console.log("Vexiona invoque un Ascendant du vide")
+        
     }
 }
 if (tableauTeam.length <= 0) {
